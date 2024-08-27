@@ -3,6 +3,7 @@ package com.softannate.traductor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,8 +34,13 @@ public class MainActivity extends AppCompatActivity {
         binding.btTraducir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //llamo al metodo traducir del viewModel con la palabra ingresada en el editText
-                vm.traducir(binding.texto.getText().toString());
+                String textoIngresado = binding.texto.getText().toString().trim();
+                if (textoIngresado.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Por favor ingrese unapalabra", Toast.LENGTH_LONG).show();
+                } else {
+                    //llamo al metodo traducir del viewModel con la palabra ingresada en el editText
+                    vm.traducir(textoIngresado);
+                }
             }
         });
     }
