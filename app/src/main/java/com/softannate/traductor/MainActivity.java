@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //cuando la activity se reanuda busco el editText y...
-        EditText texto = findViewById(R.id.texto);
-        texto.setText(""); // Limpia el texto
+        // Cuando la activity se reanuda, uso el binding para acceder a las vistas
+        binding.texto.setText(""); // Limpia el campo texto
     }
 }
